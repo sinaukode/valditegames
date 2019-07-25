@@ -5,7 +5,6 @@ const test = require('../tadatest')
 
 /* GET TADA TEST. */
 router.get('/', async function(req, res, next) {
-
     let a = [
         [5,3,2,9,8,6,7,4,1],
         [4,8,7,2,1,5,3,6,9],
