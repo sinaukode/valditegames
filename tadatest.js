@@ -1,32 +1,32 @@
 function ValidRowCol( a , b) {
 
-    var hasil = []
+    let hasil = []
 
-    for (var i = 0; i < a.length; i++) {
-        var validRow = true
-        var validCol = true
-        var r = a[i]
-        var prepArrayKolom = []
-        var prepArrayBaris = []
+    for (let i = 0; i < a.length; i++) {
+        let validRow = true
+        let validCol = true
+        let r = a[i]
+        let prepArrayKolom = []
+        let prepArrayBaris = []
 
-        //ambil kolom
-        for (var x = 0; x < r.length; x++) {
+     
+        for (let x = 0; x < r.length; x++) {
             prepArrayKolom.push(a[x][i])
         }
         //ambil baris
-        for (var x = 0; x < r.length; x++) {
+        for (let x = 0; x < r.length; x++) {
             prepArrayBaris.push(a[i][x])
         }
 
 
         //sorting kolom
-        var c = prepArrayKolom.sort()
+        let c = prepArrayKolom.sort()
         //sorting baris
-        var d = prepArrayBaris.sort()
+        let d = prepArrayBaris.sort()
 
 
         //validasi kolom
-        for (var k = 0; k < c.length; k++) {
+        for (let k = 0; k < c.length; k++) {
 
             if (c[k] !== b[k]) {
                 validCol = false
