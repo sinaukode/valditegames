@@ -1,0 +1,13 @@
+{
+  "name": "TADA",
+  "script": "bin/www",
+  "instances": "10",
+  "env": {
+    "NODE_ENV": "production",
+    "TZ":"Asia/Jakarta"
+  },
+  "env_production" : {
+    "NODE_ENV": "production"
+  }
+
+}
