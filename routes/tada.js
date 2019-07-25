@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const test = require('../tadatest')
+const test = require('../tada')
 
 
 /* GET TADA TEST. */
