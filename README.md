@@ -6,4 +6,4 @@ Function in tada.js :
 * Pengecekan jumlah baris & kolom
 * Validasi baris & kolom 
 * validasi matrix 3x3
-* cek true / false
+* check true / false

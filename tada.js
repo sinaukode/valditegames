@@ -1,80 +1,83 @@
 function ValidRowCol(a, b) {
-
     let hasil = []
-
-    for (let i = 0; i < a.length; i++) {
-        let validRow = true
-        let validCol = true
-        let r = a[i]
-        let prepArrayKolom = []
-        let prepArrayBaris = []
-
-        console.log(r)
-
-        if (r.length === b.length) {
-            for (let x = 0; x < r.length; x++) {
-                prepArrayKolom.push(a[x][i])
-            }
-            //ambil baris
-            for (let x = 0; x < r.length; x++) {
-                prepArrayBaris.push(a[i][x])
-            }
-
-
-            //sorting kolom
-            let c = prepArrayKolom.sort()
-            //sorting baris
-            let d = prepArrayBaris.sort()
-
-
-            //validasi kolom
-
-            for (let k = 0; k < c.length; k++) {
-
-                if (c[k] !== b[k]) {
-                    validCol = false
+    try {
+        for (let i = 0; i < a.length; i++) {
+            let validRow = true
+            let validCol = true
+            let r = a[i]
+            let prepArrayKolom = []
+            let prepArrayBaris = []
+            //cek jumlah row
+            if (r.length === b.length) {
+                for (let x = 0; x < r.length; x++) {
+                    prepArrayKolom.push(a[x][i])
+                }
+                //ambil baris
+                for (let x = 0; x < r.length; x++) {
+                    prepArrayBaris.push(a[i][x])
                 }
 
-                hasil.push(validCol)
+                //sorting kolom
+                let c = prepArrayKolom.sort()
+                //sorting baris
+                let d = prepArrayBaris.sort()
 
 
-                //validasi row
-                for (k = 0; k < d.length; k++) {
-                    if (d[k] !== b[k]) {
-                        validRow = false
+                //validasi kolom
+
+                for (let k = 0; k < c.length; k++) {
+
+                    if (c[k] !== b[k]) {
+                        validCol = false
                     }
-                }
 
+                    hasil.push(validCol)
+
+
+                    //validasi row
+                    for (k = 0; k < d.length; k++) {
+                        if (d[k] !== b[k]) {
+                            validRow = false
+                        }
+                    }
+
+                    hasil.push(validRow)
+                }
+            } else {
+
+                validRow = false
                 hasil.push(validRow)
             }
-        } else {
-            hasil.push(false)
+
         }
-
-
+    } catch (e) {
+        hasil.push(false)
     }
+
 
     return hasil
 }
 
 let validBox = (a, b) => {
+
     let hasilBox = [];
     let validBox = true;
-    for (let i = 0; i < a.length; i += 3) {
-        for (let j = 0; j < a.length; j += 3) {
-            let prepArrayBox = []
-            for (let x = 0; x < 3; x++) {
+    try {
+        //transform 3x3
+        for (let i = 0; i < a.length; i += 3) {
+            for (let j = 0; j < a.length; j += 3) {
+                let prepArrayBox = []
+                for (let x = 0; x < 3; x++) {
 
-                for (let y = 0; y < 3; y++) {
+                    for (let y = 0; y < 3; y++) {
 
-                    prepArrayBox.push(a[i + x][j + y])
+                        prepArrayBox.push(a[i + x][j + y])
+                    }
+
                 }
 
-            }
+                let f = prepArrayBox.sort()
 
-            let f = prepArrayBox.sort()
-
-            if (f.length === b.length) {
 
                 for (let z = 0; z < f.length; z++) {
 
@@ -83,12 +86,13 @@ let validBox = (a, b) => {
                     }
                 }
                 hasilBox.push(validBox)
-            } else {
 
-                hasilBox.push(false)
             }
-
         }
+
+    } catch (e) {
+        validBox = false
+        hasilBox.push(validBox)
     }
 
     return hasilBox
@@ -96,14 +100,12 @@ let validBox = (a, b) => {
 
 
 let runner = async (a, b) => {
+    let row = await ValidRowCol(a, b)
+    let colrow = row.indexOf(false);
 
     let grid = await validBox(a, b)
-    // console.log(grid.length)
-    let row = await ValidRowCol(a, b)
-    // console.log(row.length)
-
     let box = grid.indexOf(false);
-    let colrow = row.indexOf(false);
+
 
     console.log(box)
     console.log(colrow)
