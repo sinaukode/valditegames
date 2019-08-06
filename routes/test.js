@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const test = require('../tada')
+const test = require('../test')
 
 
-/* GET TADA TEST. */
 router.get('/', async function(req, res, next) {
     let a = [
         [5,3,2,9,8,6,7,4,1],
